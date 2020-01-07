@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var alertIsVisible = false
-    
+    @State var sliderValue : Double = 50.0
     
     var body: some View {
             VStack {
@@ -25,7 +25,7 @@ struct ContentView: View {
                 Spacer()
                 HStack{
                     Text("1")
-                    Slider(value: .constant(10))
+                    Slider(value: self.$sliderValue, in: 1...100)
                     Text("100")
                 }
                 //Button row
@@ -38,7 +38,7 @@ struct ContentView: View {
                 }
                 .alert(isPresented: $alertIsVisible){ () ->
                     Alert in
-                    return Alert(title: Text("Hello there"), message: Text("Hello, my name is Yura and it is my first app"), dismissButton: .default(Text("Close")))
+                    return Alert(title: Text("Result"), message: Text("The slider's value is \(Int(round(self.sliderValue)))."), dismissButton: .default(Text("Ok")))
                 }
                 //Information row
                 Spacer()
