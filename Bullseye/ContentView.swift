@@ -38,7 +38,8 @@ struct ContentView: View {
                 }
                 .alert(isPresented: $alertIsVisible){ () ->
                     Alert in
-                    return Alert(title: Text("Result"), message: Text("The slider's value is \(Int(round(self.sliderValue)))."), dismissButton: .default(Text("Ok")))
+                    var roundedValue = Int(self.sliderValue.rounded())
+                    return Alert(title: Text("Result"), message: Text("The slider's value is \(roundedValue)."), dismissButton: .default(Text("Ok")))
                 }
                 //Information row
                 Spacer()
